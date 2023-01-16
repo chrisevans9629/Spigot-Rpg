@@ -1,0 +1,8 @@
+name: Rpg
+version: '1.0.0'
+main: evans.rpg.plugin.RpgPlugin
+api-version: '1.17'
+commands:
+  class:
+    description: Gives starting items
+    usage: /rpg:class class_name|list

@@ -1,0 +1,12 @@
+classes:
+  fighter:
+    items:
+      IRON_HELMET:
+        enchantments:
+          MENDING: 1
+          DURABILITY: 3
+          THORNS: 3
+          PROTECTION_ENVIRONMENTAL: 3
+      IRON_CHESTPLATE:
+      IRON_BOOTS:
+      IRON_LEGGINGS:
