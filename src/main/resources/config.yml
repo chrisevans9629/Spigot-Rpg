@@ -4,9 +4,81 @@ classes:
       IRON_HELMET:
         enchantments:
           MENDING: 1
-          DURABILITY: 3
+          UNBREAKING: 3
           THORNS: 3
-          PROTECTION_ENVIRONMENTAL: 3
+          PROTECTION: 3
       IRON_CHESTPLATE:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+          THORNS: 3
+          PROTECTION: 3
       IRON_BOOTS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+          THORNS: 3
+          PROTECTION: 3
       IRON_LEGGINGS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+          THORNS: 3
+          PROTECTION: 3
+      SHIELD:
+        count: 1
+      IRON_SWORD:
+        enchantments:
+          unbreaking: 3
+          looting: 3
+          sharpness: 3
+      BOW:
+        enchantments:
+          infinity: 1
+          power: 3
+          unbreaking: 3
+          flame: 1
+  builder:
+    items:
+      COBBLESTONE:
+        count: 64
+      BIRCH_WOOD:
+        count: 64
+      IRON_PICKAXE:
+        count: 1
+      IRON_AXE:
+        count: 1
+      PISTON:
+        count: 32
+      STICKY_PISTON:
+        count: 32
+      TORCH:
+        count: 64
+      BRICKS:
+        count: 64
+      GLASS:
+        count: 64
+      WHITE_WOOL:
+        count: 64
+      WHITE_BED:
+        count: 4
+  farmer:
+    items:
+      MELON_SEEDS:
+        count: 64
+      PUMPKIN_SEEDS:
+        count: 64
+      WHEAT_SEEDS:
+        count: 64
+      CARROTS:
+        count: 64
+      IRON_HOE:
+        count: 1
+      BONE_MEAL:
+        count: 64
+      DIRT:
+        count: 64
+      SAND:
+        count: 64
+      BUCKET:
+        count: 4

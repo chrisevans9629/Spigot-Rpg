@@ -35,10 +35,16 @@ public class CommandClass implements CommandExecutor {
             String[] args) {
 
         if(!(sender instanceof Player) || args.length < 1){
-            sender.sendMessage("Usage: /class name");
+            sender.sendMessage("Usage: /class class_name|list");
             return true;
         }
         String className = args[0];
+
+        if(className.equals("list")){
+            Set<String> classes = plugin.getConfig().getConfigurationSection("classes").getKeys(false);
+            sender.sendMessage("Classes: " + String.join(",", classes));
+            return true;
+        }
         Boolean isForce = args.length > 1 && args[1].equals("--force");
 
         Player player = (Player)sender;
@@ -71,81 +77,46 @@ public class CommandClass implements CommandExecutor {
         Logger logger = plugin.getLogger();
         for (String item : items){
             logger.info("item: " + item);
+
             Material material = Material.getMaterial(item);
             int count = plugin.getConfig().getInt(classItemPath + "." + item + ".count");
+            if(material == null){
+                sender.sendMessage("material not found: " + item);
+                return true;
+            }
 
             logger.info("count: " + count);
             ItemStack stack = new ItemStack(material);
             if(count > 0){
                 stack.setAmount(count);
             }
-
-            ConfigurationSection enchantSection = plugin.getConfig().getConfigurationSection(classItemPath + "." + item + ".enchantments");
-
-            if(enchantSection != null)
-            {
-                Map<String, Object> enchantments = enchantSection.getValues(false);
-
-                if(enchantments != null){
-                    for (String enchantment : enchantments.keySet()){
-                        logger.info("enchantment: " + enchantment);
-                        Enchantment ench = Enchantment.getByKey(NamespacedKey.minecraft(enchantment.toLowerCase()));
-                        int level = (Integer)enchantments.get(enchantment);
-                        stack.addEnchantment(ench, level);
-                    }
-                }
-            }
+            AddEnchantments(classItemPath, logger, item, stack);
 
             stacks.add(stack);
         }
-//
-//        if(className.equals("fighter")){
-//
-//
-//            ArrayList<Material> armor = new ArrayList<Material>();
-//            armor.add(Material.IRON_HELMET);
-//            armor.add(Material.IRON_CHESTPLATE);
-//            armor.add(Material.IRON_BOOTS);
-//            armor.add(Material.IRON_LEGGINGS);
-//
-//
-//            for (Material armo : armor) {
-//                ItemStack stack = new ItemStack(armo);
-//                stack.addEnchantment(Enchantment.MENDING, 1);
-//                stack.addEnchantment(Enchantment.DURABILITY, 3);
-//                stack.addEnchantment(Enchantment.THORNS, 3);
-//                stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
-//                stacks.add(stack);
-//            }
-//
-//            stacks.add(new ItemStack(Material.SHIELD));
-//
-//            ItemStack sword = new ItemStack(Material.IRON_SWORD);
-//            sword.addEnchantment(Enchantment.DURABILITY, 3);
-//            sword.addEnchantment(Enchantment.LOOT_BONUS_MOBS, 3);
-//            sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
-//            stacks.add(sword);
-//
-//            ItemStack bow = new ItemStack(Material.BOW);
-//            bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
-//            bow.addEnchantment(Enchantment.ARROW_DAMAGE, 3);
-//            bow.addEnchantment(Enchantment.DURABILITY, 3);
-//            bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
-//
-//            stacks.add(bow);
-//        }
-//        else if(className.equals("builder")){
-//
-//        }
-//        else{
-//            sender.sendMessage("Class was not recognized: " + className);
-//            return true;
-//        }
 
         for (ItemStack item : stacks){
             player.getInventory().addItem(item);
         }
         pdc.set(classKey, PersistentDataType.STRING, className);
         return true;
+    }
+
+    private void AddEnchantments(String classItemPath, Logger logger, String item, ItemStack stack) {
+        ConfigurationSection enchantSection = plugin.getConfig().getConfigurationSection(classItemPath + "." + item + ".enchantments");
+
+        if(enchantSection != null)
+        {
+            Map<String, Object> enchantments = enchantSection.getValues(false);
+
+            if(enchantments != null){
+                for (String enchantment : enchantments.keySet()){
+                    logger.info("enchantment: " + enchantment);
+                    Enchantment ench = Enchantment.getByKey(NamespacedKey.minecraft(enchantment.toLowerCase()));
+                    int level = (Integer)enchantments.get(enchantment);
+                    stack.addEnchantment(ench, level);
+                }
+            }
+        }
     }
 }
