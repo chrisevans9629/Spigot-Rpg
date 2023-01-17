@@ -63,6 +63,8 @@ classes:
       WHITE_BED:
         count: 4
   farmer:
+    flags:
+      plantMany: true
     items:
       MELON_SEEDS:
         count: 64
@@ -72,8 +74,14 @@ classes:
         count: 64
       CARROTS:
         count: 64
-      IRON_HOE:
+      DIAMOND_HOE:
         count: 1
+        enchantments:
+          efficiency: 5
+          unbreaking: 3
+          fortune: 3
+          silk_touch: 1
+          mending: 1
       BONE_MEAL:
         count: 64
       DIRT:

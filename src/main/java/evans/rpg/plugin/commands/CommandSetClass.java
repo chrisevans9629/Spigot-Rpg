@@ -1,5 +1,6 @@
-package evans.rpg.plugin;
+package evans.rpg.plugin.commands;
 
+import evans.rpg.plugin.RpgPlugin;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
@@ -19,11 +20,9 @@ public class CommandSetClass {
 
 
     private final RpgPlugin plugin;
-    private final NamespacedKey classKey;
 
     public CommandSetClass(RpgPlugin plugin) {
         this.plugin = plugin;
-        classKey= new NamespacedKey(plugin, "class");
     }
 
     public boolean Execute(CommandSender sender, String className, String[] args) {
@@ -31,8 +30,7 @@ public class CommandSetClass {
 
         Player player = (Player)sender;
 
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        String currentClass = pdc.get(classKey, PersistentDataType.STRING);
+        String currentClass = plugin.getCurrentClass(player);
 
         if(currentClass != null && !isForce)
         {
@@ -79,7 +77,7 @@ public class CommandSetClass {
         for (ItemStack item : stacks){
             player.getInventory().addItem(item);
         }
-        pdc.set(classKey, PersistentDataType.STRING, className);
+        plugin.setCurrentClass(player, className);
         return true;
     }
 

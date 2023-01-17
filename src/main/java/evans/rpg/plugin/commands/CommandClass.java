@@ -1,17 +1,12 @@
-package evans.rpg.plugin;
+package evans.rpg.plugin.commands;
 
-import org.bukkit.NamespacedKey;
+import evans.rpg.plugin.RpgPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
-import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class CommandClass implements CommandExecutor {
 
