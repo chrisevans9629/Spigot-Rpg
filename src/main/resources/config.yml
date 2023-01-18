@@ -1,5 +1,7 @@
 classes:
   fighter:
+    flags:
+      invisibilitySneak: true
     items:
       IRON_HELMET:
         enchantments:
@@ -39,6 +41,8 @@ classes:
           unbreaking: 3
           flame: 1
   builder:
+    flags:
+      resistance: true
     items:
       COBBLESTONE:
         count: 64
@@ -90,3 +94,24 @@ classes:
         count: 64
       BUCKET:
         count: 4
+  explorer:
+    flags:
+      speed: true
+    items:
+      OAK_BOAT:
+        count: 1
+      ELYTRA:
+        count: 1
+      FIREWORK_ROCKET:
+        count: 64
+      FISHING_ROD:
+        count: 1
+      MAP:
+        count: 1
+      SPYGLASS:
+        count: 1
+      COMPASS:
+        count: 1
+  miner:
+    flags:
+      haste: true

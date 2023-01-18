@@ -1,6 +1,7 @@
 package evans.rpg.plugin;
 
 import evans.rpg.plugin.commands.CommandClass;
+import evans.rpg.plugin.listeners.InvisibleListener;
 import evans.rpg.plugin.listeners.JoinListener;
 import evans.rpg.plugin.listeners.PlantListener;
 import org.bukkit.NamespacedKey;
@@ -26,7 +27,9 @@ public class RpgPlugin extends JavaPlugin {
         this.saveDefaultConfig();
         this.getCommand("class").setExecutor(new CommandClass(this));
         getServer().getPluginManager().registerEvents(new PlantListener(this), this);
-        getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new InvisibleListener(this), this);
+
         super.onEnable();
 
     }
