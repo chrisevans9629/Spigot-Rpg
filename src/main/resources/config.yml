@@ -1,5 +1,6 @@
 classes:
   fighter:
+    description: Invisible when sneaking. Starts with enchanted iron armor, iron sword, shield, and bow.
     flags:
       invisibilitySneak: true
     items:
@@ -29,6 +30,9 @@ classes:
           PROTECTION: 3
       SHIELD:
         count: 1
+        enchantments:
+          unbreaking: 3
+          mending: 1
       IRON_SWORD:
         enchantments:
           unbreaking: 3
@@ -41,16 +45,27 @@ classes:
           unbreaking: 3
           flame: 1
   builder:
+    description: Resistant to damage. Starts with a large amount of building blocks.
     flags:
       resistance: true
     items:
+      BIRCH_PLANKS:
+        count: 64
+      SPRUCE_PLANKS:
+        count: 64
+      OAK_PLANKS:
+        count: 64
       COBBLESTONE:
         count: 64
       BIRCH_WOOD:
         count: 64
+      REDSTONE:
+        count: 64
       IRON_PICKAXE:
         count: 1
       IRON_AXE:
+        count: 1
+      IRON_SHOVEL:
         count: 1
       PISTON:
         count: 32
@@ -66,10 +81,37 @@ classes:
         count: 64
       WHITE_BED:
         count: 4
+      LEATHER_HELMET:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_CHESTPLATE:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_LEGGINGS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_BOOTS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
   farmer:
+    description: Can reap/sow multiple plants at once. starts with hoe, seeds, bone meal, eggs, and buckets.
     flags:
       plantMany: true
     items:
+      CHICKEN_SPAWN_EGG:
+        count: 10
+      COW_SPAWN_EGG:
+        count: 10
+      SHEARS:
+        enchantments:
+          unbreaking: 3
+          mending: 1
+          efficiency: 3
+
       MELON_SEEDS:
         count: 64
       PUMPKIN_SEEDS:
@@ -94,10 +136,29 @@ classes:
         count: 64
       BUCKET:
         count: 4
+      LEATHER_HELMET:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_CHESTPLATE:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_LEGGINGS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_BOOTS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
   explorer:
+    description: Moves faster and jump higher. Start with wings, fishing rod, map, spyglass, and leather armor.
     flags:
       speed: true
     items:
+      IRON_AXE:
+        count: 1
       OAK_BOAT:
         count: 1
       ELYTRA:
@@ -112,6 +173,72 @@ classes:
         count: 1
       COMPASS:
         count: 1
+      FLINT_AND_STEEL:
+        count: 1
+      TORCH:
+        count: 32
+      WHITE_BED:
+        count: 1
+      LEATHER_HELMET:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_CHESTPLATE:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_LEGGINGS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_BOOTS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+
   miner:
+    description: Mines faster. Starts with pickaxe, redstone, rails, and leather armor.
     flags:
       haste: true
+    items:
+      MINECART:
+        count: 1
+      POWERED_RAIL:
+        count: 32
+      RAIL:
+        count: 64
+      REDSTONE:
+        count: 64
+      TORCH:
+        count: 64
+      WHITE_BED:
+        count: 1
+      IRON_PICKAXE:
+        enchantments:
+          UNBREAKING: 3
+          MENDING: 1
+          FORTUNE: 3
+          EFFICIENCY: 3
+      IRON_SHOVEL:
+        enchantments:
+          UNBREAKING: 3
+          MENDING: 1
+          EFFICIENCY: 3
+      IRON_AXE:
+        count: 1
+      LEATHER_HELMET:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_CHESTPLATE:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_LEGGINGS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3
+      LEATHER_BOOTS:
+        enchantments:
+          MENDING: 1
+          UNBREAKING: 3

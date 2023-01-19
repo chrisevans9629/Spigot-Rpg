@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,5 +55,26 @@ public class RpgPlugin extends JavaPlugin {
         String className = getCurrentClass(player);
 
         return getConfig().getBoolean("classes." + className + ".flags." + flagName);
+    }
+
+    public void AddEffects(Player player){
+        boolean speed = getClassFlag(player, "speed");
+        boolean haste = getClassFlag(player, "haste");
+        boolean resistance = getClassFlag(player, "resistance");
+        if(speed){
+            SetConstantEffect(player, PotionEffectType.SPEED);
+        }
+        else if(haste){
+            SetConstantEffect(player, PotionEffectType.FAST_DIGGING);
+        }
+        else if(resistance){
+            SetConstantEffect(player, PotionEffectType.DAMAGE_RESISTANCE);
+        }
+    }
+
+    public void SetConstantEffect(Player player, PotionEffectType type){
+        if(!player.hasPotionEffect(type)){
+            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, 1));
+        }
     }
 }

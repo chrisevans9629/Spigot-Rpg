@@ -10,8 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -78,7 +80,16 @@ public class CommandSetClass {
             player.getInventory().addItem(item);
         }
         plugin.setCurrentClass(player, className);
+        RemoveCurrentEffects(player);
+        plugin.AddEffects(player);
         return true;
+    }
+
+    private void RemoveCurrentEffects(Player player) {
+        Collection<PotionEffect> CurrentEffects = player.getActivePotionEffects();
+        for (PotionEffect effect : CurrentEffects){
+            player.removePotionEffect(effect.getType());
+        }
     }
 
     private void AddEnchantments(String classItemPath, Logger logger, String item, ItemStack stack) {

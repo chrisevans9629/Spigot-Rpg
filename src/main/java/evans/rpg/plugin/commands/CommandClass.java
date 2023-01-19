@@ -1,6 +1,7 @@
 package evans.rpg.plugin.commands;
 
 import evans.rpg.plugin.RpgPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -30,7 +31,11 @@ public class CommandClass implements CommandExecutor {
 
         if(className.equals("list")){
             Set<String> classes = plugin.getConfig().getConfigurationSection("classes").getKeys(false);
-            sender.sendMessage("Classes: " + String.join(",", classes));
+
+            for (String classItem : classes){
+                String description = plugin.getConfig().getString("classes." + classItem + ".description");
+                sender.sendMessage(ChatColor.GREEN + classItem + ": " + ChatColor.WHITE + description);
+            }
             return true;
         }
         else{
