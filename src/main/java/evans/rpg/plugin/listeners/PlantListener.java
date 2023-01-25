@@ -30,12 +30,12 @@ public class PlantListener implements Listener {
         if(multiPlant) {
             Block block = event.getBlock();
             if(block.getBlockData() instanceof Ageable){
-                Ageable age = (Ageable) block.getBlockData();
-                if(age.getAge() != age.getMaximumAge()){
-                    logger.info("crop not ready... canceling");
-                    event.setCancelled(true);
-                    return;
-                }
+                //Ageable age = (Ageable) block.getBlockData();
+                //if(age.getAge() != age.getMaximumAge()){
+                //    logger.info("crop not ready... canceling");
+                //    event.setCancelled(true);
+                //    return;
+                //}
                 logger.info("broke a crop!!");
                 for (BlockFace face : BlockFace.values()){
                     Block relative = block.getRelative(face);

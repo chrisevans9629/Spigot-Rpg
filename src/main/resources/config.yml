@@ -62,10 +62,19 @@ classes:
       REDSTONE:
         count: 64
       IRON_PICKAXE:
+        enchantments:
+          MENDING: 1
+          unbreaking: 3
         count: 1
       IRON_AXE:
+        enchantments:
+          MENDING: 1
+          unbreaking: 3
         count: 1
       IRON_SHOVEL:
+        enchantments:
+          MENDING: 1
+          unbreaking: 3
         count: 1
       PISTON:
         count: 32
