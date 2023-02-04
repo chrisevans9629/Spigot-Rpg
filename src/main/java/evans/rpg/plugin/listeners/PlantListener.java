@@ -60,7 +60,7 @@ public class PlantListener implements Listener {
                 relative.setType(block.getType());
                 logger.info("placed block count: " + count);
                 count += 1;
-                count += PlaceBlock(relative, stackCount, count);
+                count = PlaceBlock(relative, stackCount, count);
             }
         }
 
@@ -70,7 +70,7 @@ public class PlantListener implements Listener {
     @EventHandler
     public void onBlockPlaced(BlockPlaceEvent event){
         Player player = event.getPlayer();
-        ItemStack stack = player.getItemInUse();
+        ItemStack stack = player.getInventory().getItemInMainHand();
 
         boolean multiPlant = plugin.getClassFlag(player, "plantMany");
         if(multiPlant){
@@ -80,15 +80,22 @@ public class PlantListener implements Listener {
 
                 logger.info("placed a crop!!");
                 int stackCount = stack.getAmount();
-                int amountPlaced = PlaceBlock(block, stackCount, 0);
-                if(amountPlaced >= stackCount){
-                    logger.info("removing stack: " + stack.getType().name());
-                    player.getInventory().remove(stack);
-                }
-                else{
-                    logger.info("decreasing count to: " + amountPlaced);
-                    stack.setAmount(amountPlaced);
-                }
+
+                logger.info("stack count: " + stackCount);
+
+                int amountPlaced = PlaceBlock(block, stackCount, 2);
+                //if(amountPlaced >= stackCount){
+                //    logger.info("removing stack: " + stack.getType().name());
+                //    player.getInventory().rem
+                //}
+                //else{
+                logger.info("amount placed: " + amountPlaced);
+
+                int diff = stackCount-amountPlaced+1;
+
+                    logger.info("decreasing count to: " + diff);
+                    stack.setAmount(diff);
+                //}
             }
         }
     }
